@@ -7,18 +7,21 @@
 */
 
 // Import the global.css file here so that it is included on
-import "../styles/global.css";
+import '../styles/global.css';
 
-import GoogleFont from "./GoogleFont.astro";
-import FontAwesome from "./FontAwesome.astro";
-import ThemeScript from "./ThemeScript.astro";
-import Favicon from "./Favicon.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import GoogleFont from './GoogleFont.astro';
+import FontAwesome from './FontAwesome.astro';
+import ThemeScript from './ThemeScript.astro';
+import Favicon from './Favicon.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!DOCTYPE html>
-<html class="theme-bubblegum" lang="en">
+<html class="theme-bubblegum" lang={lang}>
   <head>
     <!-- Global Metadata -->
     <meta charset="utf-8" />
@@ -31,9 +34,7 @@ import Footer from "../components/Footer.astro";
     <FontAwesome />
   </head>
 
-  <body
-    class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8"
-  >
+  <body class="max-w-3xl mx-auto min-h-screen px-6 sm:px-8">
     <Header />
     <main id="main">
       <slot name="main" />
@@ -43,9 +44,9 @@ import Footer from "../components/Footer.astro";
       body {
         display: grid;
         grid-template-areas:
-          "header"
-          "main"
-          "footer";
+          'header'
+          'main'
+          'footer';
         grid-template-rows: 5rem minmax(0, 1fr) 5rem;
         grid-template-columns: minmax(0, 1fr);
       }

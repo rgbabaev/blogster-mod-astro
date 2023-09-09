@@ -1,12 +1,22 @@
 ---
-import { readAll } from "../lib/markdoc/read";
-import { blog } from "../lib/markdoc/frontmatter.schema";
-import PageLayout from "../layouts/PageLayout.astro";
-import PageMeta from "../components/PageMeta.astro";
-import { SITE_TITLE } from "../config";
+import { readAll } from '../../../lib/markdoc/read';
+import { blog } from '../../../lib/markdoc/frontmatter.schema';
+import PageLayout from '../../../layouts/PageLayout.astro';
+import PageMeta from '../../../components/PageMeta.astro';
+import { languages } from '../../../i18n/ui';
+import { getLangFromUrl } from '../../../i18n/utils';
+import { SITE_TITLE } from '../../../config';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => {
+    return { params: { lang } };
+  });
+}
+
+const lang = getLangFromUrl(Astro.url);
 
 const posts = await readAll({
-  directory: "blog",
+  directory: `blog_${lang}`,
   frontmatterSchema: blog,
 });
 
@@ -27,10 +37,10 @@ const sortedPosts = posts
         sortedPosts.map((post) => {
           const formattedDate = new Date(
             post.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
+          ).toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
           });
           return (
             <li class="grid grid-cols-[1fr] md:grid-cols-[1fr_auto] mb-3 md:gap-2 items-start">
@@ -53,7 +63,7 @@ const sortedPosts = posts
                   </a>
                 ) : (
                   <a
-                    href={`/blog/${post.slug}`}
+                    href={`/${lang}/articles/${post.slug}`}
                     class="unset
                         transition-[background-size] duration-300 
                         bg-gradient-to-r bg-left-bottom bg-no-repeat
