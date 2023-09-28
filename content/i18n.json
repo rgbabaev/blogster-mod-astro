@@ -1,0 +1,31 @@
+{
+  "languages": {
+    "en": "English",
+    "ka": "ქართული",
+    "ru": "Русский"
+  },
+  "defaultLang": "en",
+  "ui": {
+    "en": {
+      "nav.home": "Home",
+      "nav.articles": "Articles",
+      "nav.about": "About",
+      "nav.language": "En",
+      "title.articles": "Articles"
+    },
+    "ka": {
+      "nav.home": "მთავარი",
+      "nav.articles": "სტატიები",
+      "nav.about": "ჩემ შესახებ",
+      "nav.language": "ქა",
+      "title.articles": "სტატიები"
+    },
+    "ru": {
+      "nav.home": "Главная",
+      "nav.articles": "Статьи",
+      "nav.about": "Обо мне",
+      "nav.language": "Ру",
+      "title.articles": "Статьи"
+    }
+  }
+}

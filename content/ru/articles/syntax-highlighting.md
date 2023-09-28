@@ -1,5 +1,7 @@
 ---
+draft: false
 external: false
+featured: false
 title: 'Prism.js подсветка синтаксиса для блоков кода'
 description: 'Code blocks are syntax highlighted using Prism.js'
 date: 2022-10-30

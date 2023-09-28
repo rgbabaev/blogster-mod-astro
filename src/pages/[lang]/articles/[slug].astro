@@ -1,11 +1,11 @@
 ---
-import { readOne, readAll } from '../../../lib/markdoc/read';
-import { blog } from '../../../lib/markdoc/frontmatter.schema';
-import Renderer from '../../../components/Renderer.astro';
-import BlogPostMeta from '../../../components/BlogPostMeta.astro';
-import ContentLayout from '../../../layouts/ContentLayout.astro';
-import { SITE_URL } from '../../../config';
-import { languages } from 'src/i18n/ui';
+import { readOne, readAll } from 'src/lib/markdoc/read';
+import { blog } from 'src/lib/markdoc/frontmatter.schema';
+import Renderer from 'src/components/Renderer.astro';
+import BlogPostMeta from 'src/components/BlogPostMeta.astro';
+import ContentLayout from 'src/layouts/ContentLayout.astro';
+import { SITE_URL } from 'src/config';
+import { languages } from 'src/i18n';
 
 export async function getStaticPaths() {
   const langs = Object.keys(languages) as Array<keyof typeof languages>;
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
   for (const lang of langs) {
     const postsByLang = (
       await readAll({
-        directory: `blog_${lang}`,
+        directory: `${lang}/articles`,
         frontmatterSchema: blog,
       })
     ).map((post) => ({ ...post, lang }));
@@ -43,7 +43,7 @@ if (typeof slug !== 'string') {
 }
 
 const { content, frontmatter } = await readOne({
-  directory: `blog_${lang}`,
+  directory: `${lang}/articles`,
   slug,
   frontmatterSchema: blog,
 });
@@ -54,7 +54,7 @@ const ogImageAbsoluteUrl =
     : undefined;
 ---
 
-<ContentLayout title={frontmatter.title} date={frontmatter.date}>
+<ContentLayout title={frontmatter.title} date={frontmatter.date} lang={lang}>
   <BlogPostMeta
     title={frontmatter.title}
     description={frontmatter.external ? undefined : frontmatter.description}

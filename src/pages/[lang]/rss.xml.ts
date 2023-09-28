@@ -1,11 +1,21 @@
-import rss from "@astrojs/rss";
-import { blog } from "../lib/markdoc/frontmatter.schema";
-import { readAll } from "../lib/markdoc/read";
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
+import type { APIContext } from 'astro';
+import rss from '@astrojs/rss';
+import { i18n, languages } from 'src/i18n';
+import { blog } from '../../lib/markdoc/frontmatter.schema';
+import { readAll } from '../../lib/markdoc/read';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../../config';
 
-export const get = async () => {
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => {
+    return { params: { lang } };
+  });
+}
+
+export const get = async (Astro: APIContext) => {
+  const lang = i18n.getLangFromUrl(Astro.url);
+
   const posts = await readAll({
-    directory: "blog",
+    directory: `${lang}/articles`,
     frontmatterSchema: blog,
   });
 
@@ -20,7 +30,7 @@ export const get = async () => {
   let baseUrl = SITE_URL;
   // removing trailing slash if found
   // https://example.com/ => https://example.com
-  baseUrl = baseUrl.replace(/\/+$/g, "");
+  baseUrl = baseUrl.replace(/\/+$/g, '');
 
   const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
     if (frontmatter.external) {

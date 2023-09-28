@@ -1,14 +1,14 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { i18n } from 'src/i18n';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const lang = i18n.getLangFromUrl(Astro.url);
+const t = i18n.useTranslationsFromUrl(Astro.url);
 
 const links = [
   { href: `/${lang}`, text: t('nav.home') },
   { href: `/${lang}/articles`, text: t('nav.articles') },
-  { href: `/${lang}/projects`, text: t('nav.about') },
+  { href: `/${lang}/about`, text: t('nav.about') },
 ];
 ---
 

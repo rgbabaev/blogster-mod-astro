@@ -1,11 +1,10 @@
 ---
-import { readAll } from '../../../lib/markdoc/read';
-import { blog } from '../../../lib/markdoc/frontmatter.schema';
-import PageLayout from '../../../layouts/PageLayout.astro';
-import PageMeta from '../../../components/PageMeta.astro';
-import { languages } from '../../../i18n/ui';
-import { getLangFromUrl } from '../../../i18n/utils';
-import { SITE_TITLE } from '../../../config';
+import { readAll } from 'src/lib/markdoc/read';
+import { blog } from 'src/lib/markdoc/frontmatter.schema';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import { i18n, languages } from 'src/i18n';
+import { SITE_TITLE } from 'src/config';
 
 export async function getStaticPaths() {
   return Object.keys(languages).map((lang) => {
@@ -13,10 +12,9 @@ export async function getStaticPaths() {
   });
 }
 
-const lang = getLangFromUrl(Astro.url);
-
+const lang = i18n.getLangFromUrl(Astro.url);
 const posts = await readAll({
-  directory: `blog_${lang}`,
+  directory: `${lang}/articles`,
   frontmatterSchema: blog,
 });
 
@@ -37,7 +35,7 @@ const sortedPosts = posts
         sortedPosts.map((post) => {
           const formattedDate = new Date(
             post.frontmatter.date
-          ).toLocaleDateString('en-us', {
+          ).toLocaleDateString(lang, {
             year: 'numeric',
             month: 'short',
             day: 'numeric',
