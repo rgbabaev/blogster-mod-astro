@@ -2,7 +2,7 @@ import type { APIContext } from 'astro';
 import rss from '@astrojs/rss';
 import { i18n, languages } from 'src/i18n';
 import { blog } from '../../lib/markdoc/frontmatter.schema';
-import { readAll } from '../../lib/markdoc/read';
+import { readAll } from 'src/lib/markdoc/read';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../../config';
 
 export async function getStaticPaths() {

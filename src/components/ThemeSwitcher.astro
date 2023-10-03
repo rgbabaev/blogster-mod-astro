@@ -1,0 +1,18 @@
+---
+// TODO: finalize
+import HeaderDropdown from './HeaderDropdown.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const items = [
+  ['System', () => console.log('system')],
+  ['Light', () => console.log('light')],
+  ['Dark', () => console.log('dark')],
+];
+---
+
+<HeaderDropdown items={items} label="Theme" class={className} />

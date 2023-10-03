@@ -16,16 +16,18 @@ import Footer from '../components/Footer.astro';
 
 export interface Props {
   title: string;
-  date: Date;
+  date?: Date;
   lang: string;
 }
 
 const { title, date, lang } = Astro.props;
-const formattedDate = new Date(date).toLocaleDateString(lang, {
-  year: 'numeric',
-  month: 'short',
-  day: 'numeric',
-});
+const formattedDate = date
+  ? new Date(date).toLocaleDateString(lang, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  : null;
 ---
 
 <!DOCTYPE html>
@@ -53,7 +55,11 @@ const formattedDate = new Date(date).toLocaleDateString(lang, {
             {title}
           </span>
         </h1>
-        <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
+        {
+          formattedDate && (
+            <time class="block mb-[2em] text-text-muted">{formattedDate}</time>
+          )
+        }
         <slot name="content" />
       </section>
     </main>

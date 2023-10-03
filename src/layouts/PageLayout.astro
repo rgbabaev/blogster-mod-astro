@@ -3,7 +3,6 @@
   This layout is used in 
   - pages/index.astro
   - pages/blog.astro
-  - pages/projects.astro
 */
 
 // Import the global.css file here so that it is included on
@@ -15,9 +14,9 @@ import ThemeScript from './ThemeScript.astro';
 import Favicon from './Favicon.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl } from '../i18n/utils';
+import { i18n } from 'src/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = i18n.getLangFromUrl(Astro.url);
 ---
 
 <!DOCTYPE html>

@@ -1,0 +1,94 @@
+---
+interface Props {
+  class?: string;
+  label: string;
+  items: [string, string | (() => void)][];
+}
+// TODO: Callback actions don't work yet
+
+const { class: className, items, label } = Astro.props;
+const uniqueId = `dropdown-toggle-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="relative inline-block text-left">
+  <button
+    type="button"
+    class:list={[
+      'dropdown-toggle-button bg-transparent py-2 display-inline animated-link text-text-bold',
+      className,
+    ]}
+    id={uniqueId}
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    {label}
+  </button>
+  <div
+    class="dropdown hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-xl overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby={uniqueId}
+  >
+    <ul class="unset py-1 list-none list-inside" role="none">
+      {
+        items.map(([label, action]) => (
+          <li class="px-0">
+            {action instanceof Function ? (
+              <button
+                is:raw
+                type="button"
+                onClick={action}
+                class="block unset px-4 py-2 text-sm hover:bg-slate-500/20 w-full text-left"
+                role="menuitem"
+              >
+                {label}
+              </button>
+            ) : (
+              <a
+                href={`/${action}`}
+                class="block unset px-4 py-2 text-sm hover:bg-slate-500/20"
+                role="menuitem"
+              >
+                {label}
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  const togglers = document.querySelectorAll('.dropdown-toggle-button');
+
+  for (const btn of togglers) {
+    btn.addEventListener('click', () => {
+      const dropdown = btn.nextElementSibling;
+      if (!dropdown) return;
+      console.log(dropdown.classList.contains('hidden'));
+      btn.setAttribute(
+        'aria-expanded',
+        dropdown.classList.contains('hidden').toString()
+      );
+      console.dir(btn);
+      dropdown.classList.toggle('hidden');
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target || !(e.target instanceof HTMLElement)) return;
+    if (!e.target.classList.contains('dropdown-toggle-button')) {
+      togglers.forEach((btn) => {
+        btn.classList.remove('active');
+        btn.nextElementSibling?.classList.add('hidden');
+      });
+    }
+  });
+</script>
+
+<style>
+  .dropdown {
+    background-color: rgb(var(--color-bg-body));
+  }
+</style>

@@ -1,0 +1,18 @@
+---
+import HeaderDropdown from './HeaderDropdown.astro';
+
+interface Props {
+  class?: string;
+  languages: Record<string, string>;
+}
+
+import { i18n } from 'src/i18n';
+
+const t = i18n.useTranslationsFromUrl(Astro.url);
+
+const { class: className, languages } = Astro.props;
+
+const items = Object.entries(languages).map(([key, value]) => [value, key]);
+---
+
+<HeaderDropdown items={items} label={t('nav.language')} class={className} />

@@ -5,7 +5,7 @@ import Renderer from 'src/components/Renderer.astro';
 import BlogPostMeta from 'src/components/BlogPostMeta.astro';
 import ContentLayout from 'src/layouts/ContentLayout.astro';
 import { SITE_URL } from 'src/config';
-import { languages } from 'src/i18n';
+import { defaultLang, languages } from 'src/i18n';
 
 export async function getStaticPaths() {
   const langs = Object.keys(languages) as Array<keyof typeof languages>;
@@ -37,7 +37,8 @@ export async function getStaticPaths() {
   });
 }
 
-const { slug, lang } = Astro.params;
+const { slug, lang = defaultLang } = Astro.params;
+
 if (typeof slug !== 'string') {
   throw Error(`slug should be string. Received: ${slug}`);
 }

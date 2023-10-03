@@ -9,7 +9,7 @@ export const createTranslations = (
     return defaultLang;
   }
 
-  function useTranslations(lang: keyof typeof translations) {
+  function useTranslations(lang: keyof typeof translations = defaultLang) {
     return function t(key: keyof (typeof translations)[typeof defaultLang]) {
       return translations[lang][key] || translations[defaultLang][key];
     };
