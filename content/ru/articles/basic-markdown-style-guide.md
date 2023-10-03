@@ -1,7 +1,9 @@
 ---
 external: false
-title: "Basic markdown style guide"
-description: "You can author content using the familiar markdown syntax you already know. All basic markdown syntax is supported."
+draft: false
+featured: true
+title: 'Базовое руководство по Markdown'
+description: 'You can author content using the familiar markdown syntax you already know. All basic markdown syntax is supported.'
 date: 2022-11-02
 ---
 

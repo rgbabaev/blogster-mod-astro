@@ -1,0 +1,32 @@
+---
+import path from 'path';
+import { contentDirectory, read } from 'src/lib/markdoc/read';
+import PageMeta from 'src/components/PageMeta.astro';
+import ContentLayout from 'src/layouts/ContentLayout.astro';
+import Renderer from 'src/components/Renderer.astro';
+import { SITE_TITLE } from 'src/config';
+import { defaultLang, languages } from 'src/i18n';
+import { staticPage } from 'src/lib/markdoc/frontmatter.schema';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => {
+    return { params: { lang } };
+  });
+}
+
+const { lang = defaultLang } = Astro.params;
+
+const { content, frontmatter } = await read({
+  filepath: path.join(contentDirectory, lang || defaultLang, `about.md`),
+  schema: staticPage,
+});
+---
+
+<ContentLayout title={frontmatter.title} lang={lang}>
+  <PageMeta
+    title={`${frontmatter.title} | ${SITE_TITLE}`}
+    description={frontmatter.description}
+    slot="meta"
+  />
+  <Renderer content={content} slot="content" />
+</ContentLayout>

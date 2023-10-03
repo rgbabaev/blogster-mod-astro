@@ -1,0 +1,38 @@
+---
+import { readAll } from 'src/lib/markdoc/read';
+import { blog } from 'src/lib/markdoc/frontmatter.schema';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import { i18n, languages } from 'src/i18n';
+import { SITE_TITLE } from 'src/config';
+import ArticlesList from 'src/components/ArticlesList.astro';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => {
+    return { params: { lang } };
+  });
+}
+
+const lang = i18n.getLangFromUrl(Astro.url);
+const t = i18n.useTranslations(lang);
+
+const posts = await readAll({
+  directory: `${lang}/articles`,
+  frontmatterSchema: blog,
+});
+
+const sortedPosts = posts
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+---
+
+<PageLayout>
+  <PageMeta title={`${t('title.articles')} | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <ArticlesList posts={sortedPosts} />
+  </section>
+</PageLayout>
