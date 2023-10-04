@@ -10,7 +10,7 @@
       "nav.home": "Home",
       "nav.articles": "Articles",
       "nav.about": "About",
-      "nav.language": "En",
+      "nav.language": "en",
       "title.articles": "Articles"
     },
     "ka": {
@@ -24,7 +24,7 @@
       "nav.home": "Главная",
       "nav.articles": "Статьи",
       "nav.about": "Обо мне",
-      "nav.language": "Ру",
+      "nav.language": "ру",
       "title.articles": "Статьи"
     }
   }

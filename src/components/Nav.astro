@@ -1,6 +1,7 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { i18n } from 'src/i18n';
+import Icon from './Icon.astro';
 
 const lang = i18n.getLangFromUrl(Astro.url);
 const t = i18n.useTranslationsFromUrl(Astro.url);
@@ -28,9 +29,8 @@ const links = [
   </nav>
   <nav class="md:hidden">
     <button id="mobile-menu-open">
-      <i class="fa-solid fa-bars" aria-hidden="true" title="Open mobile menu"
-      ></i>
-      <span class="fa-sr-only">Open mobile menu</span>
+      <Icon name="bars" class="fill-text-body" />
+      <span class="sr-only">Open mobile menu</span>
     </button>
     <section
       id="mobile-menu"
@@ -38,11 +38,8 @@ const links = [
     >
       <div class="bg-bg-body w-[75%] h-full drop-shadow-2xl">
         <button id="mobile-menu-close" class="px-6 h-[5rem] text-lg xml-[1px]">
-          <i
-            class="fa-solid fa-xmark"
-            aria-hidden="true"
-            title="Close mobile menu"></i>
-          <span class="fa-sr-only">Close mobile menu</span>
+          <Icon name="xmark" class="fill-text-body" />
+          <span class="sr-only">Close mobile menu</span>
         </button>
         <ul class="unset flex flex-col text-text-bold gap-4 [&>li]:p-0 px-6">
           {

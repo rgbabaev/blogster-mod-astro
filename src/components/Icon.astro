@@ -1,0 +1,12 @@
+---
+import clsx from 'clsx';
+import Sprite from './Sprite.astro';
+
+export interface props {
+  name: string;
+}
+
+const { class: className, name } = Astro.props;
+---
+
+<Sprite name={name} class={clsx('w-4 h-4 inline', className)} />

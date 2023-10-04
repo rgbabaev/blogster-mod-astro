@@ -1,5 +1,6 @@
 ---
 import { i18n } from 'src/i18n';
+import Icon from './Icon.astro';
 
 interface Post {
   slug: string;
@@ -46,7 +47,10 @@ const lang = i18n.getLangFromUrl(Astro.url);
               >
                 <span>{post.frontmatter.title}</span>
                 <span>
-                  <i class="ml-1 mr-1 text-[12px] pb-2 fa-solid fa-up-right-from-square" />
+                  <Icon
+                    name="up-right-from-square"
+                    class="ml-1 mr-1 w-[12px] h-[12px] fill-text-body"
+                  />
                 </span>
               </a>
             ) : (
