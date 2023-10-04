@@ -1,4 +1,5 @@
 ---
+import clsx from 'clsx';
 import HeaderDropdown from './HeaderDropdown.astro';
 
 interface Props {
@@ -15,4 +16,12 @@ const { class: className, languages } = Astro.props;
 const items = Object.entries(languages).map(([key, value]) => [value, key]);
 ---
 
-<HeaderDropdown items={items} label={t('nav.language')} class={className} />
+<HeaderDropdown
+  items={items}
+  iconName="earth-americas"
+  label={t('nav.language')}
+  class={clsx(
+    'unset ml-4 rounded-sm transition-[background-size] duration-150 bg-left-bottom bg-[length:0%_55%] hover:bg-[length:100%_55%] bg-no-repeat bg-gradient-to-r from-primary-blue to-primary-blue dark:bg-none dark:hover:text-primary-blue fill-text-bold dark:fill-white dark:hover:fill-primary-blue',
+    className
+  )}
+/>

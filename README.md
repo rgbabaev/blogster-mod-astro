@@ -18,7 +18,7 @@ Under the hood it uses [Astro](https://astro.build) and [Markdoc](https://markdo
   - [ ] Switching language redirects to the same page in another language
 - [ ] 404 page
 - [ ] External links open in a new tab & security additions
-- [ ] Fontawesome replaced with SVG icons
+- [x] Fontawesome replaced with SVG icons
 - [ ] Added tags with filtering and navigation
 - [ ] Dark theme improvements:
   - [ ] 3-mode switcher (with system theme)

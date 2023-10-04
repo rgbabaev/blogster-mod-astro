@@ -1,12 +1,14 @@
 ---
+import Icon from './Icon.astro';
 interface Props {
   class?: string;
+  iconName?: string;
   label: string;
   items: [string, string | (() => void)][];
 }
 // TODO: Callback actions don't work yet
 
-const { class: className, items, label } = Astro.props;
+const { class: className, iconName, items, label } = Astro.props;
 const uniqueId = `dropdown-toggle-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
@@ -14,22 +16,23 @@ const uniqueId = `dropdown-toggle-${Math.random().toString(36).substr(2, 9)}`;
   <button
     type="button"
     class:list={[
-      'dropdown-toggle-button bg-transparent py-2 display-inline animated-link text-text-bold',
+      'dropdown-toggle-button bg-transparent display-inline text-text-bold',
       className,
     ]}
     id={uniqueId}
     aria-expanded="false"
     aria-haspopup="true"
   >
+    {!!iconName && <Icon name={iconName} />}
     {label}
   </button>
   <div
-    class="dropdown hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-xl overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+    class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-xl overflow-hidden bg-bg-code shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
     role="menu"
     aria-orientation="vertical"
     aria-labelledby={uniqueId}
   >
-    <ul class="unset py-1 list-none list-inside" role="none">
+    <ul class="unset list-none list-inside" role="none">
       {
         items.map(([label, action]) => (
           <li class="px-0">
@@ -86,9 +89,3 @@ const uniqueId = `dropdown-toggle-${Math.random().toString(36).substr(2, 9)}`;
     }
   });
 </script>
-
-<style>
-  .dropdown {
-    background-color: rgb(var(--color-bg-body));
-  }
-</style>
