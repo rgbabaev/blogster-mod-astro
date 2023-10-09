@@ -3,6 +3,9 @@ external: false
 draft: false
 featured: true
 title: 'Extended markdown style guide'
+tags:
+  - Guide
+  - Markdown
 description: 'In addition to supporting all basic Markdoc syntax, this template also supports extended markdown syntax to render custom components.'
 date: 2022-11-01
 ---

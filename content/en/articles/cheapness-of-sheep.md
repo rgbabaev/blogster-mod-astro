@@ -3,6 +3,8 @@ external: false
 draft: false
 featured: true
 title: Cheapness of sheep
+tags:
+  - Sheep
 description: This post is an example of four language trnaslation.
 date: 2023-09-09
 ---

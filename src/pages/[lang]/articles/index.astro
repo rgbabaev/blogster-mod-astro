@@ -6,6 +6,7 @@ import PageMeta from 'src/components/PageMeta.astro';
 import { i18n, languages } from 'src/i18n';
 import { SITE_TITLE } from 'src/config';
 import ArticlesList from 'src/components/ArticlesList.astro';
+import PageTitle from 'src/components/PageTitle.astro';
 
 export async function getStaticPaths() {
   return Object.keys(languages).map((lang) => {
@@ -32,6 +33,7 @@ const sortedPosts = posts
 
 <PageLayout>
   <PageMeta title={`${t('title.articles')} | ${SITE_TITLE}`} slot="meta" />
+  <PageTitle title={t('title.articles')} slot="main" />
   <section slot="main">
     <ArticlesList posts={sortedPosts} />
   </section>

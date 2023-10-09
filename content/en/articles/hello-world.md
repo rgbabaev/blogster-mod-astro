@@ -2,6 +2,8 @@
 external: false
 draft: true
 title: Hello World
+tags:
+	- Draft
 description: It's a beautiful world out there.
 date: 2022-11-05
 ---

@@ -3,7 +3,7 @@ import path from 'path';
 import { contentDirectory, read, readAll } from 'src/lib/markdoc/read';
 import PageMeta from 'src/components/PageMeta.astro';
 import PageLayout from 'src/layouts/PageLayout.astro';
-import Intro from 'src/components/Intro.astro';
+import PageTitle from 'src/components/PageTitle.astro';
 import Renderer from 'src/components/Renderer.astro';
 import { SITE_TITLE } from 'src/config';
 import { defaultLang, i18n, languages } from 'src/i18n';
@@ -48,7 +48,7 @@ const sortedPosts = posts
     slot="meta"
   />
   <Fragment slot="main">
-    <Intro />
+    <PageTitle title="Data tells" />
     <Renderer content={content} />
     <ArticlesList posts={sortedPosts} />
   </Fragment>

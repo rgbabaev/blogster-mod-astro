@@ -3,6 +3,9 @@ external: false
 draft: false
 featured: true
 title: 'Basic markdown style guide'
+tags:
+  - Guide
+  - Markdown
 description: 'You can author content using the familiar markdown syntax you already know. All basic markdown syntax is supported.'
 date: 2022-11-02
 ---
