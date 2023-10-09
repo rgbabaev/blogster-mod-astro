@@ -3,6 +3,8 @@ external: false
 draft: false
 featured: true
 title: Дешевизна баранов
+tags:
+	- Бараны
 description: Этот пост является примером перевода на четыре языка.
 date: 2023-09-09
 ---

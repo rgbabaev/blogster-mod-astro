@@ -3,6 +3,8 @@ external: false
 draft: false
 featured: true
 title: ცხვრის იაფად
+tags:
+  - Овца
 description: ეს პოსტი არის ოთხენოვანი თარგმანის მაგალითი.
 date: 2023-09-09
 ---

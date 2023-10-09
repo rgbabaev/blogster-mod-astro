@@ -1,4 +1,8 @@
 ---
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
 ---
 
 <section class="mb-8">
@@ -9,7 +13,7 @@
       <span
         class="bg-gradient-to-bl bg-no-repeat bg-bottom bg-[length:90%_40%] from-primary-blue to-primary-blue dark:from-primary-blue dark:to-primary-blue"
       >
-        Data tells
+        {title}
       </span>
     </h1>
   </div>

@@ -1,0 +1,20 @@
+---
+export interface Props {
+  tags?: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+{
+  !!tags && (
+    <ul class="block m-0 p-0 mb-[0.25em]">
+      {tags.map((tag) => (
+        <li class="inline-block text-sm p-0 m-0 mr-2">
+          {/* <a href={`/articles/tags/${tag}`}>{tag}</a> */}
+          <span>{`#${tag}`}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}

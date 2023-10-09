@@ -55,7 +55,12 @@ const ogImageAbsoluteUrl =
     : undefined;
 ---
 
-<ContentLayout title={frontmatter.title} date={frontmatter.date} lang={lang}>
+<ContentLayout
+  title={frontmatter.title}
+  date={frontmatter.date}
+  lang={lang}
+  tags={frontmatter.tags}
+>
   <BlogPostMeta
     title={frontmatter.title}
     description={frontmatter.external ? undefined : frontmatter.description}
