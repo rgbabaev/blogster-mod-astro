@@ -1,0 +1,54 @@
+---
+import { readAll } from 'src/lib/markdoc/read';
+import { blog } from 'src/lib/markdoc/frontmatter.schema';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import { i18n, languages } from 'src/i18n';
+import { SITE_TITLE } from 'src/config';
+import PageTitle from 'src/components/PageTitle.astro';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => {
+    return { params: { lang } };
+  });
+}
+
+const lang = i18n.getLangFromUrl(Astro.url);
+const t = i18n.useTranslations(lang);
+
+const posts = await readAll({
+  directory: `${lang}/articles`,
+  frontmatterSchema: blog,
+});
+
+const tags = {};
+
+posts
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  )
+  .forEach(
+    (p) =>
+      p.frontmatter.tags?.forEach((tag) =>
+        tags[tag] ? tags[tag]++ : (tags[tag] = 1)
+      ) || []
+  );
+---
+
+<PageLayout>
+  <PageMeta title={`${t('title.tags')} | ${SITE_TITLE}`} slot="meta" />
+  <PageTitle title={t('title.tags')} slot="main" />
+  <section slot="main">
+    {/* TODO: move links formation to one place */}
+    {
+      Object.entries(tags).map(([tag, count]) => (
+        <div>
+          <a href={`/${lang}/tags/${tag}`}>#{tag}</a> {count}
+        </div>
+      ))
+    }
+  </section>
+</PageLayout>

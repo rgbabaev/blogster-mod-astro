@@ -1,0 +1,73 @@
+---
+import { readOne, readAll } from 'src/lib/markdoc/read';
+import { blog } from 'src/lib/markdoc/frontmatter.schema';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageMeta from 'src/components/PageMeta.astro';
+import PageTitle from 'src/components/PageTitle.astro';
+import ArticlesList from 'src/components/ArticlesList.astro';
+import { SITE_TITLE } from 'src/config';
+import { defaultLang, i18n, languages } from 'src/i18n';
+
+export async function getStaticPaths() {
+  const langs = Object.keys(languages) as Array<keyof typeof languages>;
+
+  const tags: Array<
+    {
+      lang: keyof typeof languages;
+    } & Awaited<ReturnType<typeof readOne<typeof blog>>>
+  > = [];
+
+  for (const lang of langs) {
+    const tagsByLang = (
+      await readAll({
+        directory: `${lang}/articles`,
+        frontmatterSchema: blog,
+      })
+    )
+      .filter((p) => p.frontmatter.draft !== true)
+      .flatMap((p) => p.frontmatter.tags || [])
+      .filter((tag, index, self) => self.indexOf(tag) === index)
+      .map((tag) => ({ params: { slug: tag, lang } }));
+
+    tags.push(...tagsByLang);
+  }
+
+  return tags;
+}
+
+const { slug, lang = defaultLang } = Astro.params;
+const t = i18n.useTranslations(lang);
+
+if (typeof slug !== 'string') {
+  throw Error(`slug should be string. Received: ${slug}`);
+}
+
+const posts = (
+  await readAll({
+    directory: `${lang}/articles`,
+    frontmatterSchema: blog,
+  })
+)
+  .filter(
+    (p) => p.frontmatter.draft !== true && p.frontmatter.tags?.includes(slug)
+  )
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).valueOf() -
+      new Date(a.frontmatter.date).valueOf()
+  );
+---
+
+<PageLayout>
+  <PageMeta
+    title={`${t('title.articles-by-tag')} #${slug} | ${SITE_TITLE}`}
+    slot="meta"
+  />
+  <PageTitle title={`#${slug}`} slot="main" />
+  <p class="text-center" slot="main">
+    {`${t('txt.articles-by-tag')} #${slug}`}
+  </p>
+  <section slot="main">
+    <ArticlesList posts={posts} />
+  </section>
+</PageLayout>
