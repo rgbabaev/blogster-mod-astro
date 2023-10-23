@@ -4,7 +4,7 @@ draft: false
 featured: true
 title: ცხვრის იაფად
 tags:
-  - Овца
+  - ცხვარი
 description: ეს პოსტი არის ოთხენოვანი თარგმანის მაგალითი.
 date: 2023-09-09
 ---

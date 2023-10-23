@@ -11,21 +11,30 @@
       "nav.articles": "Articles",
       "nav.about": "About",
       "nav.language": "en",
-      "title.articles": "Articles"
+      "title.articles": "Articles",
+      "title.tags": "Tags",
+      "title.articles-by-tag": "Articles tagged with",
+      "txt.articles-by-tag": "All articles tagged with"
     },
     "ka": {
       "nav.home": "მთავარი",
       "nav.articles": "სტატიები",
       "nav.about": "ჩემ შესახებ",
       "nav.language": "ქა",
-      "title.articles": "სტატიები"
+      "title.articles": "სტატიები",
+      "title.tags": "თეგები",
+      "title.articles-by-tag": "სტატიები მონიშნული",
+      "txt.articles-by-tag": "ყველა სტატია მონიშნულია"
     },
     "ru": {
       "nav.home": "Главная",
       "nav.articles": "Статьи",
       "nav.about": "Обо мне",
       "nav.language": "ру",
-      "title.articles": "Статьи"
+      "title.articles": "Статьи",
+      "title.tags": "Теги",
+      "title.articles-by-tag": "Статьи по тегу",
+      "txt.articles-by-tag": "Все статьи по тегу"
     }
   }
 }
