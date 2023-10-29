@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import svgSprite from 'astro-svg-sprite';
 
 /* 
   We are doing some URL mumbo jumbo here to tell Astro what the URL of your website will be.
@@ -33,12 +32,6 @@ export default defineConfig({
   site: BASE_URL,
   integrations: [
     sitemap(),
-    svgSprite({
-      include: ['./src/assets/sprite'],
-      emitFile: {
-        path: 'assets',
-      },
-    }),
     tailwind({
       config: { applyBaseStyles: false },
     }),
