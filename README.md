@@ -11,7 +11,7 @@ Under the hood it uses [Astro](https://astro.build) and [Markdoc](https://markdo
   - [x] Layout fixes
   - [x] Lib functions
   - [x] Articles
-  - [ ] Index and about pages
+  - [x] Index and about pages
   - [x] Language switcher
   - [x] RSS feed
   - [ ] Switching by browser preferences
@@ -19,7 +19,7 @@ Under the hood it uses [Astro](https://astro.build) and [Markdoc](https://markdo
 - [x] 404 page
 - [ ] External links open in a new tab & security additions
 - [x] Fontawesome replaced with SVG icons
-- [ ] Added tags with filtering and navigation
+- [x] Added tags with filtering and navigation
 - [ ] Dark theme improvements:
   - [ ] 3-mode switcher (with system theme)
   - [ ] Realtime theme switching
