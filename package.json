@@ -3,10 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev --host",
-    "start": "astro dev --host",
-    "build": "astro build",
-    "preview": "astro preview",
+    "dev": "CONTENT_DIR=content astro dev --host",
+    "dev:demo": "CONTENT_DIR=content.demo astro dev --host",
+    "start": "CONTENT_DIR=content astro dev --host",
+    "build": "CONTENT_DIR=content astro build",
+    "build:demo": "CONTENT_DIR=content.demo astro build",
+    "preview": "CONTENT_DIR=content astro preview",
     "astro": "astro",
     "clean": "rm -rf dist"
   },

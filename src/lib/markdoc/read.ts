@@ -7,7 +7,7 @@ import Markdoc from '@markdoc/markdoc';
 import { config } from './markdoc.config';
 
 // path is relative to where you run the `yarn build` command
-export const contentDirectory = path.normalize('./content');
+export const contentDirectory = path.normalize(`./${process.env.CONTENT_DIR}`);
 
 async function parseAndTransform({ content }: { content: string }) {
   const ast = Markdoc.parse(content);

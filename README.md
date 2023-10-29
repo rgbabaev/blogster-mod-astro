@@ -23,7 +23,7 @@ Under the hood it uses [Astro](https://astro.build) and [Markdoc](https://markdo
 - [ ] Dark theme improvements:
   - [ ] 3-mode switcher (with system theme)
   - [ ] Realtime theme switching
-  - [ ] Logo switching (light/dark)
+  - [x] Logo switching (light/dark)
 - [ ] Added cookies disclaimer popup
 - [ ] Added built-in Google tag manager
 - [ ] Comments in posts
