@@ -1,7 +1,8 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import Logo from 'src/components/Logo.astro';
+import HeaderLink from 'src/components/HeaderLink.astro';
+import Icon from 'src/components/Icon.astro';
 import { i18n } from 'src/i18n';
-import Icon from './Icon.astro';
 
 const lang = i18n.getLangFromUrl(Astro.url);
 const t = i18n.useTranslationsFromUrl(Astro.url);
@@ -14,19 +15,6 @@ const links = [
 ---
 
 <Fragment>
-  <nav class="hidden md:inline">
-    <section class="text-text-bold">
-      <ul class="unset flex gap-4 [&>li]:p-0">
-        {
-          links.map((link) => (
-            <li>
-              <HeaderLink href={link.href}>{link.text}</HeaderLink>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </nav>
   <nav class="md:hidden">
     <button id="mobile-menu-open">
       <Icon name="bars" class="fill-text-body" />
@@ -51,6 +39,20 @@ const links = [
           }
         </ul>
       </div>
+    </section>
+  </nav>
+  <Logo />
+  <nav class="hidden md:inline">
+    <section class="text-text-bold">
+      <ul class="unset flex gap-4 [&>li]:p-0">
+        {
+          links.map((link) => (
+            <li>
+              <HeaderLink href={link.href}>{link.text}</HeaderLink>
+            </li>
+          ))
+        }
+      </ul>
     </section>
   </nav>
 </Fragment>

@@ -33,7 +33,12 @@ export default defineConfig({
   site: BASE_URL,
   integrations: [
     sitemap(),
-    svgSprite(),
+    svgSprite({
+      include: ['./src/assets/sprite'],
+      emitFile: {
+        path: 'assets',
+      },
+    }),
     tailwind({
       config: { applyBaseStyles: false },
     }),

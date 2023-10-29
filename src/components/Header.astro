@@ -1,8 +1,7 @@
 ---
-import Nav from './Nav.astro';
-import DarkModeToggle from './DarkModeToggle.astro';
-// import ThemeSwitcher from './ThemeSwitcher.astro';
-import LangSwitcher from './LangSwitcher.astro';
+import Nav from 'src/components/Nav.astro';
+import DarkModeToggle from 'src/components/DarkModeToggle.astro';
+import LangSwitcher from 'src/components/LangSwitcher.astro';
 import { languages } from 'src/i18n';
 ---
 
@@ -18,18 +17,27 @@ import { languages } from 'src/i18n';
     class="justify-self-end py-2 flex items-center content-center text-text-bold"
   >
     <LangSwitcher class="ml-4" languages={languages} />
+    <DarkModeToggle />
   </div>
-  <!-- <ThemeSwitcher class="ml-4" /> -->
-  <DarkModeToggle />
 </header>
 <style>
   header {
     grid-area: header;
     display: grid;
     align-items: center;
-    grid-template-columns: minmax(0, 1fr) minmax(0, max-content) minmax(
-        0,
-        max-content
-      );
+    grid-template-columns:
+      30px
+      minmax(0, 1fr)
+      minmax(0, max-content)
+      minmax(0, max-content);
+  }
+
+  @media screen and (min-width: 768px) {
+    header {
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, max-content)
+        minmax(0, max-content);
+    }
   }
 </style>

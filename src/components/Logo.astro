@@ -1,0 +1,28 @@
+---
+import Sprite from 'src/components/Sprite.astro';
+---
+
+<a class="unset Logo max-w-[150px] h-[90px] md:max-w-[222px]" href="">
+  <Sprite name="logo-light" class="Logo__img_theme_light w-full" />
+  <Sprite name="logo-dark" class="Logo__img_theme_dark w-full" />
+</a>
+
+<style>
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  .Logo__img_theme_light,
+  .Logo__img_theme_dark {
+    display: none;
+  }
+
+  html:not(.dark) .Logo__img_theme_light {
+    display: block;
+  }
+
+  html.dark .Logo__img_theme_dark {
+    display: block;
+  }
+</style>
