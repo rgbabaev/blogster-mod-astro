@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# content
+content/
+
 # dependencies
 node_modules/
 

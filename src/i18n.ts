@@ -1,6 +1,10 @@
+import fs from 'fs';
 import { z } from 'zod';
 import { createTranslations } from 'src/lib/i18nTools';
-import content from 'content/i18n.json';
+
+const content = JSON.parse(
+  fs.readFileSync(`./${process.env.CONTENT_DIR}/i18n.json`, 'utf8')
+);
 
 const contentSchema = z.object({
   languages: z.record(z.string()),
