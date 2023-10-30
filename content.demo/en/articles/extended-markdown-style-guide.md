@@ -42,6 +42,15 @@ You can embed datawrapper.de charts in your blog posts.
 
 {% datawrapper id="FbExI" /%}
 
+## Tableau Public
+
+You can embed Tableau Public charts in your blog posts.
+
+You should provide the `id` and `name` params from the Tableau embed code.
+`height` is optional.
+
+{% tableau id="viz1698692200908" name="ExiledNotCircassians1864Rus/CircassianAbazinCount1860Rus" height=800 /%}
+
 ## Lesser Known HTML Elements
 
 ### abbr

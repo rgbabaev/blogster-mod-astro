@@ -105,6 +105,15 @@ export const config: Config = {
       },
       selfClosing: true,
     },
+    tableau: {
+      render: 'TableauPublicEmbed',
+      attributes: {
+        id: { type: String, required: true },
+        height: { type: Number, default: 574 },
+        name: { type: String, required: true },
+      },
+      selfClosing: true,
+    },
   },
   nodes: {
     heading: {

@@ -5,6 +5,7 @@ import YouTubeEmbed from './YouTubeEmbed.astro';
 import TweetEmbed from './TweetEmbed.astro';
 import CodePenEmbed from './CodePenEmbed.astro';
 import DataWrapperEmbed from './DataWrapperEmbed.astro';
+import TableauPublicEmbed from './TableauPublicEmbed.astro';
 import GitHubGistEmbed from './GitHubGistEmbed.astro';
 import CodeBlock from './CodeBlock.astro';
 import Heading from './Heading.astro';
@@ -42,6 +43,10 @@ const components = {
   },
   GitHubGistEmbed: {
     Component: GitHubGistEmbed,
+    props: {},
+  },
+  TableauPublicEmbed: {
+    Component: TableauPublicEmbed,
     props: {},
   },
 };
