@@ -36,6 +36,12 @@ You can embed GitHub gists in your blog posts.
 
 {% githubgist id="d96064c9c4ef2e8ef71c90a10ffcf3b2" /%}
 
+## Datawrapper.de
+
+You can embed datawrapper.de charts in your blog posts.
+
+{% datawrapper id="FbExI" /%}
+
 ## Lesser Known HTML Elements
 
 ### abbr
