@@ -1,12 +1,14 @@
 ---
-import { MarkdocRenderer } from "astro-markdoc-renderer";
-import type { Content } from "astro-markdoc-renderer";
-import YouTubeEmbed from "./YouTubeEmbed.astro";
-import TweetEmbed from "./TweetEmbed.astro";
-import CodePenEmbed from "./CodePenEmbed.astro";
-import GitHubGistEmbed from "./GitHubGistEmbed.astro";
-import CodeBlock from "./CodeBlock.astro";
-import Heading from "./Heading.astro";
+import { MarkdocRenderer } from 'astro-markdoc-renderer';
+import type { Content } from 'astro-markdoc-renderer';
+import YouTubeEmbed from './YouTubeEmbed.astro';
+import TweetEmbed from './TweetEmbed.astro';
+import CodePenEmbed from './CodePenEmbed.astro';
+import DataWrapperEmbed from './DataWrapperEmbed.astro';
+import TableauPublicEmbed from './TableauPublicEmbed.astro';
+import GitHubGistEmbed from './GitHubGistEmbed.astro';
+import CodeBlock from './CodeBlock.astro';
+import Heading from './Heading.astro';
 
 type Props = {
   content: Content;
@@ -35,8 +37,16 @@ const components = {
     Component: CodePenEmbed,
     props: {},
   },
+  DataWrapperEmbed: {
+    Component: DataWrapperEmbed,
+    props: {},
+  },
   GitHubGistEmbed: {
     Component: GitHubGistEmbed,
+    props: {},
+  },
+  TableauPublicEmbed: {
+    Component: TableauPublicEmbed,
     props: {},
   },
 };
