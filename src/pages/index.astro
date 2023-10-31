@@ -1,9 +1,10 @@
 ---
-import PageMeta from '../components/PageMeta.astro';
-import PageLayout from '../layouts/PageLayout.astro';
-import PageTitle from '../components/PageTitle.astro';
-import AboutTheTheme from '../components/AboutTheTheme.astro';
-import { SITE_TITLE } from '../config';
+import PageMeta from 'src/components/PageMeta.astro';
+import PageLayout from 'src/layouts/PageLayout.astro';
+import PageTitle from 'src/components/PageTitle.astro';
+import AboutTheTheme from 'src/components/AboutTheTheme.astro';
+import { languages } from 'src/i18n';
+import { SITE_TITLE } from 'src/config';
 ---
 
 <PageLayout>
@@ -12,4 +13,34 @@ import { SITE_TITLE } from '../config';
     <PageTitle title="Data tells" />
     <AboutTheTheme />
   </Fragment>
+  <meta
+    slot="meta"
+    property="siteSupportedLangs"
+    content={JSON.stringify(Object.keys(languages))}
+  />
+  <script slot="meta">
+  const siteLanguages = JSON.parse(
+    document.querySelector('meta[property="siteSupportedLangs"]').content
+  );
+
+  function getLangs() {
+    try {
+      if (navigator.languages != undefined)
+        return navigator.languages.map((lang) => lang.slice(0, 2));
+      return navigator.language.slice(0, 2);
+    } catch (e) {
+      return 'en';
+    }
+  }
+
+  const browserLangs = [...getLangs(), 'en'];
+
+  for (i in browserLangs) {
+    const lang = browserLangs[i];
+    if (siteLanguages.includes(lang)) {
+      window.location.replace('/' + lang);
+      break;
+    }
+  }
+  </script>
 </PageLayout>

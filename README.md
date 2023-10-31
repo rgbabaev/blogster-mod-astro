@@ -14,7 +14,7 @@ Under the hood it uses [Astro](https://astro.build) and [Markdoc](https://markdo
   - [x] Index and about pages
   - [x] Language switcher
   - [x] RSS feed
-  - [ ] Switching by browser preferences
+  - [x] Switching by browser preferences
   - [ ] Switching language redirects to the same page in another language
 - [x] 404 page
 - [ ] External links open in a new tab & security additions
