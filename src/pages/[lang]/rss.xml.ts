@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   });
 }
 
-export const get = async (Astro: APIContext) => {
+export const GET = async (Astro: APIContext) => {
   const lang = i18n.getLangFromUrl(Astro.url);
 
   const posts = await readAll({

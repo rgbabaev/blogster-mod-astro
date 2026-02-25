@@ -13,13 +13,13 @@
     "sprite-gen": "svg-sprite -sD=public/assets --symbol-dest=. --symbol-sprite=./sprite.svg src/assets/sprite/*.svg"
   },
   "dependencies": {
-    "@astrojs/prism": "^1.0.2",
-    "@astrojs/rss": "^2.0.0",
-    "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.1.3",
+    "@astrojs/prism": "^3.3.0",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/tailwind": "^5.1.5",
     "@markdoc/markdoc": "^0.2.1",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "^1.9.2",
+    "astro": "^5.17.3",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "clsx": "2.0.0",
     "cross-env": "^7.0.3",
@@ -33,5 +33,8 @@
   "devDependencies": {
     "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4"
+  },
+  "overrides": {
+    "markdown-it": "^14.1.1"
   }
 }
